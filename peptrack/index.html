@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PepTrack — Research Compound Reference & Protocol Manager</title>
+  <meta name="description" content="PepTrack helps researchers manage compound protocols, browse reference data, and perform reconstitution calculations. Private, offline-first, no account required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0E1116;
+      --surface: #151920;
+      --card: #1A1F26;
+      --border: rgba(255,255,255,0.08);
+      --text: #F4F6F9;
+      --text-muted: rgba(244, 246, 249, 0.6);
+      --accent: #3AA7FF;
+      --accent-teal: #4FD1C5;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Nav */
+    nav {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .nav-back:hover { color: var(--text); }
+    
+    /* Hero */
+    .hero {
+      padding: 80px 0 64px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin: 0 auto 32px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(58, 167, 255, 0.15);
+      color: var(--accent);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Features */
+    .features {
+      padding: 64px 0;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-teal));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    
+    /* Privacy */
+    .privacy-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 0;
+      text-align: center;
+    }
+    .privacy-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .privacy-section p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .privacy-badges {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .privacy-badge {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    
+    /* Pricing */
+    .pricing {
+      padding: 64px 0;
+      text-align: center;
+    }
+    .pricing h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .pricing-card.highlight {
+      border-color: var(--accent);
+    }
+    .pricing-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .price span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .pricing-card ul {
+      list-style: none;
+      margin-top: 20px;
+      text-align: left;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .pricing-card li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .pricing-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-teal);
+    }
+    
+    /* Disclaimer */
+    .disclaimer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    .disclaimer p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .copyright { color: var(--text-muted); font-size: 0.85rem; }
+    
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      footer .container { flex-direction: column; text-align: center; }
+      .footer-links a { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/peptrack/" class="nav-logo">PepTrack</a>
+      <a href="/" class="nav-back">← Soft Focus Apps</a>
+    </div>
+  </nav>
+  
+  <section class="hero">
+    <div class="container">
+      <h1>Research Protocol Management,<br>Simplified</h1>
+      <p>A reference library and protocol tracker for research compounds. Browse data, manage schedules, calculate reconstitution — all offline and private.</p>
+      <span class="badge">Coming Soon to Android</span>
+    </div>
+  </section>
+  
+  <section class="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><span class="icon">📚</span> Compound Library</h3>
+          <p>Browse 50+ research compounds with reference data and literature citations. Community-sourced, regularly updated.</p>
+        </div>
+        <div class="feature-card">
+          <h3><span class="icon">📅</span> Protocol Scheduling</h3>
+          <p>Build and manage research protocols. Set schedules, track progress, and maintain detailed logs for your records.</p>
+        </div>
+        <div class="feature-card">
+          <h3><span class="icon">🧮</span> Reconstitution Calculator</h3>
+          <p>Quickly calculate reconstitution ratios. Enter vial size and solvent volume — get precise measurements instantly.</p>
+        </div>
+        <div class="feature-card">
+          <h3><span class="icon">📊</span> Export & Records</h3>
+          <p>Export your protocol logs as CSV. Keep organized records for documentation and analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="privacy-section">
+    <div class="container">
+      <h2>Privacy by Design</h2>
+      <p>Your data stays on your device. No accounts, no cloud sync, no tracking. We can't see your data because we never have it.</p>
+      <div class="privacy-badges">
+        <div class="privacy-badge">🔒 No account required</div>
+        <div class="privacy-badge">📵 Works offline</div>
+        <div class="privacy-badge">🚫 No data collection</div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>2 active protocols</li>
+            <li>Full compound library</li>
+            <li>Reconstitution calculator</li>
+            <li>Ad-supported</li>
+          </ul>
+        </div>
+        <div class="pricing-card highlight">
+          <h3>Pro</h3>
+          <div class="price">$4.99 <span>/mo</span></div>
+          <ul>
+            <li>Unlimited protocols</li>
+            <li>Full history & logs</li>
+            <li>CSV export</li>
+            <li>No ads</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>Lifetime</h3>
+          <div class="price">$79.99</div>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>One-time purchase</li>
+            <li>All future updates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="disclaimer">
+    <div class="container">
+      <p><strong>Disclaimer:</strong> PepTrack is an informational reference and organizational tool for research purposes only. It does not provide medical advice, diagnosis, or treatment recommendations. All compound data is community-sourced reference information. Consult qualified professionals for any health-related decisions.</p>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <span class="copyright">© 2026 Soft Focus Apps</span>
+      <nav class="footer-links">
+        <a href="/peptrack/privacy/">Privacy Policy</a>
+        <a href="mailto:david@softfocusapps.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

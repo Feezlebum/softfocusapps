@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soft Focus Apps — Thoughtful Mobile Apps</title>
+  <meta name="description" content="Soft Focus Apps builds focused, privacy-first mobile applications. Clean design. No bloat. Just tools that work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #222;
+      --text: #f5f5f5;
+      --text-muted: #888;
+      --accent: #3b82f6;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+    
+    header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    
+    .tagline {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 1.1rem;
+    }
+    
+    main { padding: 64px 0; }
+    
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    
+    .apps { display: flex; flex-direction: column; gap: 24px; }
+    
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    
+    .app-card:hover {
+      border-color: #333;
+      transform: translateY(-2px);
+    }
+    
+    .app-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .app-desc {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    
+    .app-status {
+      display: inline-block;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+    }
+    
+    .app-status.live {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+    }
+    
+    .about {
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .about p {
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+    
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 64px;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover { color: var(--text); }
+    
+    .copyright { color: var(--text-muted); font-size: 0.9rem; }
+    
+    @media (max-width: 600px) {
+      .footer-content { flex-direction: column; text-align: center; }
+      .footer-links a { margin: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Soft Focus Apps</div>
+      <p class="tagline">Thoughtful mobile apps. Privacy-first. No bloat.</p>
+    </header>
+    
+    <main>
+      <h2>Our Apps</h2>
+      
+      <div class="apps">
+        <a href="/peptrack/" class="app-card">
+          <div class="app-name">PepTrack</div>
+          <p class="app-desc">Research compound reference and protocol management. Track schedules, browse compound data, and calculate reconstitution — all offline, all private.</p>
+          <span class="app-status">Coming Soon</span>
+        </a>
+        
+        <a href="#" class="app-card" style="pointer-events: none; opacity: 0.5;">
+          <div class="app-name">LowLux</div>
+          <p class="app-desc">Adaptive screen dimmer for comfortable nighttime use.</p>
+          <span class="app-status live">Live on Play Store</span>
+        </a>
+      </div>
+      
+      <section class="about">
+        <h2>About</h2>
+        <p>Soft Focus Apps is an indie studio building focused tools that respect your time and your data. We believe apps should do one thing well, work offline, and never sell your information.</p>
+      </section>
+    </main>
+    
+    <footer>
+      <div class="footer-content">
+        <span class="copyright">© 2026 Soft Focus Apps</span>
+        <nav class="footer-links">
+          <a href="mailto:david@softfocusapps.com">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
